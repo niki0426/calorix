@@ -1,37 +1,31 @@
 #pragma once
-enum class Gender {
-	MALE,
-	FEMALE
-};
-enum class ActivityLevel {
-	SEDENTARY, 
-	LIGHT,
-	MODERATE, 
-	ACTIVE, 
-	VERY_ACTIVE
-};
+#include <string>
+#include "Enums.h"
+
 class UserProfile {
 private:
-	int age;
-	int weight;
-	int height;
-	Gender gender;
-	ActivityLevel activityLevel;
+    int age;
+    double weight;
+    double height;
+    Gender gender;
+    ActivityLevel activityLevel;
+
 public:
-	UserProfile();
-	UserProfile(int age, int weight, int height, Gender gender, ActivityLevel activityLevel);
-	
-	int getAge() const;
-	int getWeight() const;
-	int getHeight() const;
-	Gender getGender() const;
-	ActivityLevel getActivityLevel() const;
+    UserProfile();
+    UserProfile(int age, double weight, double height, Gender gender, ActivityLevel activityLevel);
 
-	void setAge(int newAge);
-	void setWeight(int newWeight);
-	void setHeight(int newHeight);
-	void setGender(Gender newGender);
-	void setActivityLevel(ActivityLevel newActivityLevel);
+    int getAge() const;
+    double getWeight() const;
+    double getHeight() const;
+    Gender getGender() const;
+    ActivityLevel getActivityLevel() const;
 
-	void print() const;
+    void setAge(int age);
+    void setWeight(double weight);
+    void setHeight(double height);
+    void setGender(Gender gender);
+    void setActivityLevel(ActivityLevel activityLevel);
+
+    std::string toString() const;
+    static UserProfile fromString(const std::string& str);
 };

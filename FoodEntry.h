@@ -1,21 +1,29 @@
 #pragma once
+#include <string>
 #include "Food.h"
 
 class FoodEntry {
 private:
-	static int nextEntryId;
-	int entryId;
-	const Food& food;
-	double quantityGrams;
-	std::string date;
+    static int nextId;
+    int entryId;
+    const Food* food;
+    double quantityGrams;
+    std::string date;
+
 public:
-	FoodEntry(const Food& food, double quantityGrams, const std::string&  date);
+    FoodEntry();
+    FoodEntry(const Food* food, double quantityGrams, const std::string& date);
+    FoodEntry(int id, const Food* food, double quantityGrams, const std::string& date);
 
-	FoodEntry(const FoodEntry& otherFood);
-	FoodEntry& operator = (const FoodEntry& otherFood);
+    int getEntryId() const;
+    const Food* getFood() const;
+    double getQuantityGrams() const;
+    std::string getDate() const;
 
-	int getEntryId() const;
-	const Food& getFood() const;
-	double getQuantityGrams() const;
-	const std::string& getDate() const;
+    double getTotalCalories() const;
+    double getTotalProtein() const;
+    double getTotalCarbs() const;
+    double getTotalFat() const;
+
+    std::string toFileString() const;
 };

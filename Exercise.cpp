@@ -1,74 +1,44 @@
 #include "Exercise.h"
-#include <stdexcept>
+#include <sstream>
+#include <vector>
 
-int Exercise::nextExerciseId = 1;
+int Exercise::nextId = 1;
 
-Exercise::Exercise()
-	:name(""), caloriesBurnedPerHour(0), muscleGroup(MuscleGroup::CHEST) {}
+Exercise::Exercise() : exerciseId(0), caloriesBurnedPerHour(0), muscleGroup(MuscleGroup::CARDIO) {}
 
-Exercise::Exercise(const std::string& name, double caloriesBurnedPerHour, MuscleGroup muscleGroup)
-	:exerciseId(nextExerciseId++), name(name), caloriesBurnedPerHour(caloriesBurnedPerHour), muscleGroup(muscleGroup) {}
-
-int Exercise::getExerciseId() const
-{
-	return exerciseId;
+Exercise::Exercise(const std::string& name, double calPerHour, MuscleGroup muscleGroup)
+    : exerciseId(nextId++), name(name), caloriesBurnedPerHour(calPerHour), muscleGroup(muscleGroup) {
 }
 
-const std::string& Exercise::getName() const
-{
-	return name;
+Exercise::Exercise(int id, const std::string& name, double calPerHour, MuscleGroup muscleGroup)
+    : exerciseId(id), name(name), caloriesBurnedPerHour(calPerHour), muscleGroup(muscleGroup) {
+    if (id >= nextId) nextId = id + 1;
 }
 
-double Exercise::getCaloriesBurnedPerHour() const
-{
-	return caloriesBurnedPerHour;
+int Exercise::getExerciseId() const {
+    return exerciseId; 
+}
+std::string Exercise::getName() const {
+    return name; 
+}
+double Exercise::getCaloriesBurnedPerHour() const {
+    return caloriesBurnedPerHour; 
+}
+MuscleGroup Exercise::getMuscleGroup() const {
+    return muscleGroup; 
 }
 
-MuscleGroup Exercise::getMuscleGroup() const
-{
-	return muscleGroup;
+std::string Exercise::toFileString() const {
+    return std::to_string(exerciseId) + "|" + name + "|" + std::to_string(caloriesBurnedPerHour) + "|" + muscleGroupToString(muscleGroup);
 }
 
-void Exercise::setName(const std::string newName)
-{
-	name = newName;
-}
-
-void Exercise::setCaloriesBurnedPerHour(double newCaloriesBurnedPerHour)
-{
-	if (newCaloriesBurnedPerHour < 0) throw std::invalid_argument("Calories cannot be negative");
-	caloriesBurnedPerHour = newCaloriesBurnedPerHour;
-}
-
-void Exercise::setMuscleGroup(MuscleGroup newMuscleGroup)
-{
-	muscleGroup = newMuscleGroup;
-}
-
-MuscleGroup Exercise::stringToMuscleGroup(const std::string& str)
-{
-	if (str == "CHEST") return MuscleGroup::CHEST;
-	if (str == "BACK") return MuscleGroup::BACK;
-	if (str == "SHOULDERS") return MuscleGroup::SHOULDERS;
-	if (str == "ARMS") return MuscleGroup::ARMS;
-	if (str == "CORE") return MuscleGroup::CORE;
-	if (str == "LEGS") return MuscleGroup::LEGS;
-	if (str == "CARDIO") return MuscleGroup::CARDIO;
-
-	throw std::invalid_argument("Unknown muscle group");
-}
-
-std::string Exercise::muscleGroupToString(MuscleGroup muscleGroup)
-{
-	switch (muscleGroup)
-	{
-		case MuscleGroup::CHEST: return "CHEST";
-		case MuscleGroup::BACK: return "BACK";
-		case MuscleGroup::SHOULDERS: return "SHOULDERS";
-		case MuscleGroup::ARMS: return "ARMS";
-		case MuscleGroup::CORE: return "CORE";
-		case MuscleGroup::LEGS: return "LEGS";
-		case MuscleGroup::CARDIO: return "CARDIO";	
-	}
-	return "Unknown";
+Exercise Exercise::fromFileString(const std::string& str) {
+    std::istringstream iss(str);
+    std::string token;
+    std::vector<std::string> parts;
+    while (std::getline(iss, token, '|')) {
+        parts.push_back(token);
+    }
+    if (parts.size() < 4) return Exercise();
+    return Exercise(std::stoi(parts[0]), parts[1], std::stod(parts[2]), stringToMuscleGroup(parts[3]));
 }

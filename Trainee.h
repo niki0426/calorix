@@ -1,41 +1,36 @@
 #pragma once
+#include <vector>
+#include <string>
 #include "User.h"
 #include "FoodEntry.h"
 #include "ExerciseEntry.h"
 #include "FitnessGoal.h"
-#include <vector>
 
-class Trainee: public User {
+class Trainee : public User {
 private:
-	std::vector<FoodEntry> foodDiary;
-	std::vector<ExerciseEntry> exerciseDiary;
-	FitnessGoal goals;
-	std::vector<Exercise> favoriteExercises;
+    std::vector<FoodEntry> foodDiary;
+    std::vector<ExerciseEntry> exerciseDiary;
+    FitnessGoal goals;
+    std::vector<std::string> favoriteExercises;
+
 public:
-	Trainee();
-	Trainee(const std::string name, const std::string& password, const UserProfile& profile);
+    Trainee(const std::string& username, const std::string& password, const UserProfile& profile);
+    Trainee(int id, const std::string& username, const std::string& password, const UserProfile& profile);
 
-	const std::vector<FoodEntry>& getFoodDiary() const;
-	const std::vector<ExerciseEntry>& getExerciseEntry() const;
-	const FitnessGoal& getGoals() const;
-	const std::vector<Exercise> getFavoriteExercises() const;
+    bool isAdmin() const override;
+    std::string getType() const override;
 
-	void setGoals(GoalType goalType, double targetValue, const std::string& startDate, const std::string& deadline);
+    std::vector<FoodEntry>& getFoodDiary();
+    std::vector<ExerciseEntry>& getExerciseDiary();
+    FitnessGoal& getGoals();
+    const FitnessGoal& getGoals() const;
+    std::vector<std::string>& getFavoriteExercises();
 
-	void logFood(const Food& food, double quantityGrams);
-	void logExercise(const Exercise& exercise, double durationMinutes);
+    void setGoals(const FitnessGoal& goals);
 
-	void viewDailySummary();
-	void viewProgress();
+    void addFoodEntry(const FoodEntry& foodEntry);
+    void addExerciseEntry(const ExerciseEntry& exerciseEntry);
+    void addFavoriteExercise(const std::string& name);
 
-	double calculateBMI() const;
-	double calculateBMR() const;
-	void generateWorkoutPlan(double durationMinutes, const std::vector<Exercise*>& allExercises) const;
-	void addToFavorites(Exercise* exercise);
-	void viewFavorites();
-
-	void help() const override;
-	void print() const override;
-
-
+    std::string toFileString() const override;
 };

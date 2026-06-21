@@ -1,36 +1,37 @@
-#include <iostream>
 #include "User.h"
 
-int User::nextUserId = 1;
+int User::nextId = 1;
 
-User::User()
-	:userId(nextUserId++), name(""), password(""), profile() {}
-
-User::User(const std::string& name, const std::string& password, const UserProfile& profile)
-	:userId(nextUserId++), name(name), password(password), profile(profile) {}
-
-int User::getUserId() const
-{
-	return userId;
+User::User(const std::string& username, const std::string& password, const UserProfile& profile)
+    : userId(nextId++), username(username), password(password), profile(profile) {
 }
 
-const std::string& User::getName() const
-{
-	return name;
+int User::getUserId() const {
+    return userId; 
+}
+std::string User::getUsername() const {
+    return username; 
+}
+std::string User::getPassword() const {
+    return password; 
+}
+UserProfile User::getProfile() const {
+    return profile; 
+}
+void User::setPassword(const std::string& p) {
+    password = p; 
+}
+void User::setProfile(const UserProfile& p) {
+    profile = p; 
 }
 
-const std::string& User::getPassword() const
-{
-	return password;
+bool User::isAdmin() const {
+    return false; 
+}
+std::string User::getType() const {
+    return "User"; 
 }
 
-const UserProfile& User::getProfile() const
-{
-	return profile;
-}
-
-void User::print() const
-{
-	std::cout << "User [" << userId << "] " << name << "\n";
-	profile.print();
+std::string User::toFileString() const {
+    return std::to_string(userId) + "|" + username + "|" + password + "|" + getType() + "|" + profile.toString();
 }

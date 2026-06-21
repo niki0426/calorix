@@ -1,72 +1,44 @@
 #include "FitnessGoal.h"
-#include <stdexcept>
+#include <sstream>
+#include <vector>
 
-FitnessGoal::FitnessGoal()
-	: goalType(GoalType::BULKING), targetValue(0), startDate(""), deadline(""), isAchieved(0) {}
+FitnessGoal::FitnessGoal() : goalType(GoalType::MAINTENANCE), targetValue(0), isAchieved(false) {}
 
-FitnessGoal::FitnessGoal(GoalType goalType, double targetValue, const std::string& startDate, const std::string& deadline, bool isAchieved)
-	: goalType(goalType), targetValue(targetValue), startDate(startDate), deadline(deadline), isAchieved(isAchieved) {}
-
-GoalType FitnessGoal::getGoalType() const
-{
-	return goalType;
+FitnessGoal::FitnessGoal(GoalType goalType, double targetValue, const std::string& startDate, const std::string& deadline)
+    : goalType(goalType), targetValue(targetValue), startDate(startDate), deadline(deadline), isAchieved(false) {
 }
 
-double FitnessGoal::getTardetValue() const
-{
-	return targetValue;
+GoalType FitnessGoal::getGoalType() const {
+    return goalType;
+}
+double FitnessGoal::getTargetValue() const {
+    return targetValue;
+}
+std::string FitnessGoal::getStartDate() const {
+    return startDate;
+}
+std::string FitnessGoal::getDeadline() const {
+    return deadline;
+}
+bool FitnessGoal::getIsAchieved() const {
+    return isAchieved; 
 }
 
-const std::string& FitnessGoal::getStartDate() const
-{
-	return startDate;
+void FitnessGoal::setIsAchieved(bool val) { isAchieved = val; }
+
+std::string FitnessGoal::toFileString() const {
+    return goalTypeToString(goalType) + "|" + std::to_string(targetValue) + "|" + startDate + "|" + deadline + "|" + (isAchieved ? "1" : "0");
 }
 
-const std::string& FitnessGoal::getDeadline() const
-{
-	return deadline;
-}
-
-bool FitnessGoal::getIsAchieved() const
-{
-	return isAchieved;
-}
-
-void FitnessGoal::setGoalType(GoalType newGoalType)
-{
-	goalType = newGoalType;
-}
-
-void FitnessGoal::setTargetValue(double newTargetValue)
-{
-	targetValue = newTargetValue;
-}
-
-void FitnessGoal::setStartDate(const std::string& newStartDate)
-{
-	startDate = newStartDate;
-}
-
-void FitnessGoal::setIsAchieved(bool newIsAchieved)
-{
-	isAchieved = newIsAchieved;
-}
-
-GoalType FitnessGoal::stringToGoalType(const std::string& str)
-{
-	if (str == "BULKING") return GoalType::BULKING;
-	if (str == "MAINTENANCE") return GoalType::MAINTENANCE;
-	if (str == "WEIGHT_LOSS") return GoalType::WEIGHT_LOSS;
-	throw std::invalid_argument("Unknown goal type");
-}
-
-std::string FitnessGoal::goalTypeToString(GoalType gt)
-{
-	switch (gt)
-	{
-		case GoalType::BULKING: return "BULKING";
-		case GoalType::MAINTENANCE: return "MAINTENANCE";
-		case GoalType::WEIGHT_LOSS: return "WEIGHT_LOSS";
-	}
-	return "Unknown";
+FitnessGoal FitnessGoal::fromFileString(const std::string& str) {
+    std::istringstream iss(str);
+    std::string token;
+    std::vector<std::string> parts;
+    while (std::getline(iss, token, '|')) {
+        parts.push_back(token);
+    }
+    if (parts.size() < 5) return FitnessGoal();
+    FitnessGoal fitnessGoal(stringToGoalType(parts[0]), std::stod(parts[1]), parts[2], parts[3]);
+    fitnessGoal.setIsAchieved(parts[4] == "1");
+    return fitnessGoal;
 }

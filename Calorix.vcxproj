@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ae9c047f-9f55-41c1-a3f0-2ee56a1976e6}</ProjectGuid>
+    <RootNamespace>Calorix</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AddExerciseCommand.cpp" />
+    <ClCompile Include="AddFoodCommand.cpp" />
+    <ClCompile Include="AddToFavoritesCommand.cpp" />
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="BlockUserCommand.cpp" />
+    <ClCompile Include="CalculateBMICommand.cpp" />
+    <ClCompile Include="CalculateBMRCommand.cpp" />
+    <ClCompile Include="Calorix.cpp" />
+    <ClCompile Include="CalorixAdmin.cpp" />
+    <ClCompile Include="CalorixIO.cpp" />
+    <ClCompile Include="CalorixTrainee.cpp" />
+    <ClCompile Include="CalorixUsers.cpp" />
+    <ClCompile Include="CommandParser.cpp" />
+    <ClCompile Include="CurrentDate.cpp" />
+    <ClCompile Include="EndCommand.cpp" />
+    <ClCompile Include="Enums.cpp" />
+    <ClCompile Include="Exercise.cpp" />
+    <ClCompile Include="ExerciseEntry.cpp" />
+    <ClCompile Include="FitnessGoal.cpp" />
+    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="FoodEntry.cpp" />
+    <ClCompile Include="GenerateWorkoutPlanCommand.cpp" />
+    <ClCompile Include="HelpCommand.cpp" />
+    <ClCompile Include="LogExerciseCommand.cpp" />
+    <ClCompile Include="LogFoodCommand.cpp" />
+    <ClCompile Include="LoginCommand.cpp" />
+    <ClCompile Include="LogoutCommand.cpp" />
+    <ClCompile Include="RegisterCommand.cpp" />
+    <ClCompile Include="SetGoalsCommand.cpp" />
+    <ClCompile Include="Trainee.cpp" />
+    <ClCompile Include="UpdateFoodCommand.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserProfile.cpp" />
+    <ClCompile Include="ViewDailySummaryCommand.cpp" />
+    <ClCompile Include="ViewFavoritesCommand.cpp" />
+    <ClCompile Include="ViewProgressCommand.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AddExerciseCommand.h" />
+    <ClInclude Include="AddFoodCommand.h" />
+    <ClInclude Include="AddToFavoritesCommand.h" />
+    <ClInclude Include="Admin.h" />
+    <ClInclude Include="BlockUserCommand.h" />
+    <ClInclude Include="CalculateBMICommand.h" />
+    <ClInclude Include="CalculateBMRCommand.h" />
+    <ClInclude Include="Calorix.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandParser.h" />
+    <ClInclude Include="CurrentDate.h" />
+    <ClInclude Include="EndCommand.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="Exercise.h" />
+    <ClInclude Include="ExerciseEntry.h" />
+    <ClInclude Include="FitnessGoal.h" />
+    <ClInclude Include="Food.h" />
+    <ClInclude Include="FoodEntry.h" />
+    <ClInclude Include="GenerateWorkoutPlanCommand.h" />
+    <ClInclude Include="HelpCommand.h" />
+    <ClInclude Include="LogExerciseCommand.h" />
+    <ClInclude Include="LogFoodCommand.h" />
+    <ClInclude Include="LoginCommand.h" />
+    <ClInclude Include="LogoutCommand.h" />
+    <ClInclude Include="RegisterCommand.h" />
+    <ClInclude Include="SetGoalsCommand.h" />
+    <ClInclude Include="Trainee.h" />
+    <ClInclude Include="UpdateFoodCommand.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="UserProfile.h" />
+    <ClInclude Include="ViewDailySummaryCommand.h" />
+    <ClInclude Include="ViewFavoritesCommand.h" />
+    <ClInclude Include="ViewProgressCommand.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

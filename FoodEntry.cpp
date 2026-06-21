@@ -1,44 +1,51 @@
 #include "FoodEntry.h"
-#include <stdexcept>
 
-int FoodEntry::nextEntryId = 1;
+int FoodEntry::nextId = 1;
 
-FoodEntry::FoodEntry(const Food& food, double quantityGrams, const std::string& date)
-	:entryId(nextEntryId++), food(food), quantityGrams(quantityGrams), date(date) {}
+FoodEntry::FoodEntry() : entryId(0), food(nullptr), quantityGrams(0) {}
 
-FoodEntry::FoodEntry(const FoodEntry& otherFood)
-	:entryId(otherFood.entryId), food(otherFood.food), quantityGrams(otherFood.quantityGrams), date(otherFood.date) {}
-
-FoodEntry& FoodEntry::operator=(const FoodEntry& otherFood)
-{
-	if (this != &otherFood)
-	{
-		if (&food != &otherFood.food)
-		{
-			throw std::logic_error("Cannot reassing");
-		}
-		quantityGrams = otherFood.quantityGrams;
-		date = otherFood.date;
-	}
-	return *this;
+FoodEntry::FoodEntry(const Food* food, double quantity, const std::string& date)
+    : entryId(nextId++), food(food), quantityGrams(quantity), date(date) {
 }
 
-int FoodEntry::getEntryId() const
-{
-	return entryId;
+FoodEntry::FoodEntry(int id, const Food* food, double quantity, const std::string& date)
+    : entryId(id), food(food), quantityGrams(quantity), date(date) {
+    if (id >= nextId) nextId = id + 1;
 }
 
-const Food& FoodEntry::getFood() const
-{
-	return food;
+int FoodEntry::getEntryId() const {
+    return entryId; 
+}
+const Food* FoodEntry::getFood() const {
+    return food; 
+}
+double FoodEntry::getQuantityGrams() const {
+    return quantityGrams; 
+}
+std::string FoodEntry::getDate() const {
+    return date; 
+}
+double FoodEntry::getTotalCalories() const {
+    if (!food) return 0;
+    return (food->getCaloriesPer100g() * quantityGrams) / 100.0;
 }
 
-double FoodEntry::getQuantityGrams() const
-{
-	return quantityGrams;
+double FoodEntry::getTotalProtein() const {
+    if (!food) return 0;
+    return (food->getProteinPer100g() * quantityGrams) / 100.0;
 }
 
-const std::string& FoodEntry::getDate() const
-{
-	return date;
+double FoodEntry::getTotalCarbs() const {
+    if (!food) return 0;
+    return (food->getCarbsPer100g() * quantityGrams) / 100.0;
+}
+
+double FoodEntry::getTotalFat() const {
+    if (!food) return 0;
+    return (food->getFatPer100g() * quantityGrams) / 100.0;
+}
+
+std::string FoodEntry::toFileString() const {
+    return std::to_string(entryId) + "|" + (food ? std::to_string(food->getFoodId()) : "0") + "|"
+        + std::to_string(quantityGrams) + "|" + date;
 }

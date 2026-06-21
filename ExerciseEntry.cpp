@@ -1,43 +1,36 @@
 #include "ExerciseEntry.h"
-#include <stdexcept>
 
-int ExerciseEntry::nextEntryId = 1;
+int ExerciseEntry::nextId = 1;
 
-ExerciseEntry::ExerciseEntry(const Exercise& exercise, double durationMinutes, const std::string date)
-	:entryId(nextEntryId++), exercise(exercise), durationMinutes(durationMinutes), date(date) {}
+ExerciseEntry::ExerciseEntry() : entryId(0), exercise(nullptr), durationMinutes(0) {}
 
-ExerciseEntry::ExerciseEntry(const ExerciseEntry& otherExerciseEntry)
-	:entryId(otherExerciseEntry.entryId), exercise(otherExerciseEntry.exercise), durationMinutes(otherExerciseEntry.durationMinutes), date(otherExerciseEntry.date) {}
-
-ExerciseEntry& ExerciseEntry::operator=(const ExerciseEntry& otherExerciseEntry)
-{
-	if (this != &otherExerciseEntry)
-	{
-		if (&exercise != &otherExerciseEntry.exercise)
-		{
-			throw std::logic_error("Cannot reassing");
-		}
-		durationMinutes = otherExerciseEntry.durationMinutes;
-		date = otherExerciseEntry.date;
-	}
+ExerciseEntry::ExerciseEntry(const Exercise* exercise, int duration, const std::string& date)
+    : entryId(nextId++), exercise(exercise), durationMinutes(duration), date(date) {
 }
 
-int ExerciseEntry::getEntryId() const
-{
-	return entryId;
+ExerciseEntry::ExerciseEntry(int id, const Exercise* exercise, int duration, const std::string& date)
+    : entryId(id), exercise(exercise), durationMinutes(duration), date(date) {
+    if (id >= nextId) nextId = id + 1;
 }
 
-const Exercise& ExerciseEntry::getExercise() const
-{
-	return exercise;
+int ExerciseEntry::getEntryId() const {
+    return entryId; 
+}
+const Exercise* ExerciseEntry::getExercise() const {
+    return exercise; 
+}
+int ExerciseEntry::getDurationMinutes() const {
+    return durationMinutes; 
+}
+std::string ExerciseEntry::getDate() const {
+    return date; 
+}
+double ExerciseEntry::getBurnedCalories() const {
+    if (!exercise) return 0;
+    return (exercise->getCaloriesBurnedPerHour() * durationMinutes) / 60.0;
 }
 
-double ExerciseEntry::getDurationMinutes() const
-{
-	return durationMinutes;
-}
-
-const std::string ExerciseEntry::getDate() const
-{
-	return date;
+std::string ExerciseEntry::toFileString() const {
+    return std::to_string(entryId) + "|" + (exercise ? std::to_string(exercise->getExerciseId()) : "0") + "|"
+        + std::to_string(durationMinutes) + "|" + date;
 }
