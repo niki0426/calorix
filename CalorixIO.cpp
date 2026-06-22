@@ -58,7 +58,7 @@ void Calorix::loadUsers() {
             users.push_back(std::make_unique<Admin>(id, username, password, prof));
         }
         else {
-            auto trainee = std::make_unique<Trainee>(username, password, prof);
+            auto trainee = std::make_unique<Trainee>(id,username, password, prof);
             if (parts.size() >= 14) {
                 std::string goalStr = parts[9] + "|" + parts[10] + "|" + parts[11] + "|" + parts[12] + "|" + parts[13];
                 trainee->setGoals(FitnessGoal::fromFileString(goalStr));

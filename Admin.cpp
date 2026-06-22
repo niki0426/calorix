@@ -5,7 +5,7 @@ Admin::Admin(const std::string& username, const std::string& password, const Use
 }
 
 Admin::Admin(int id, const std::string& username, const std::string& password, const UserProfile& profile)
-    : User(username, password, profile) {
+    : User(id, username, password, profile) {
 }
 
 bool Admin::isAdmin() const {

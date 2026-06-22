@@ -5,6 +5,10 @@ int User::nextId = 1;
 User::User(const std::string& username, const std::string& password, const UserProfile& profile)
     : userId(nextId++), username(username), password(password), profile(profile) {
 }
+User::User(int id, const std::string& username, const std::string& password, const UserProfile& profile)
+    : userId(id), username(username), password(password), profile(profile) {
+    if (id >= nextId) nextId = id + 1;
+}
 
 int User::getUserId() const {
     return userId; 

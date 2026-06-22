@@ -5,7 +5,7 @@ Trainee::Trainee(const std::string& username, const std::string& password, const
 	: User(username, password, profile) {
 }
 Trainee::Trainee(int id, const std::string& username, const std::string& password, const UserProfile& profile)
-	: User(username, password, profile) {
+	: User(id, username, password, profile) {
 }
 bool Trainee::isAdmin() const {
 	return false; 

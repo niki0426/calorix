@@ -13,6 +13,7 @@ protected:
 public:
 
     User(const std::string& username, const std::string& password, const UserProfile& profile);
+    User(int id, const std::string& username, const std::string& password, const UserProfile& profile);
     virtual ~User() = default;
 
     int getUserId() const;
