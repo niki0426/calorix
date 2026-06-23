@@ -6,6 +6,3 @@ void CalculateBMRCommand::execute() {
     system.calculateBMR();
 }
 
-std::string CalculateBMRCommand::getDescription() const {
-    return "calculate-bmr";
-}

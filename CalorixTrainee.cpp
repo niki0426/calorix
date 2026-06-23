@@ -23,6 +23,10 @@ void Calorix::setGoals(const std::string& goalTypeStr, double targetValue, const
 }
 
 void Calorix::logFood(const std::string& foodName, double quantityGrams) {
+    if (quantityGrams <= 0) {
+        std::cout << "Error: Quantity must be positive.\n";
+        return;
+    }
     Trainee* trainee = dynamic_cast<Trainee*>(currentUser);
     if (!trainee) {
         std::cout << "Error: Only trainees can log food.\n";
@@ -40,6 +44,7 @@ void Calorix::logFood(const std::string& foodName, double quantityGrams) {
 }
 
 void Calorix::logExercise(const std::string& exerciseName, int durationMinutes) {
+
     Trainee* trainee = dynamic_cast<Trainee*>(currentUser);
     if (!trainee) {
         std::cout << "Error: Only trainees can log exercise.\n";

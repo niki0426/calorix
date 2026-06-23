@@ -7,7 +7,3 @@ LogFoodCommand::LogFoodCommand(Calorix& system, const std::string& foodName, dou
 void LogFoodCommand::execute() {
     system.logFood(foodName, quantityGrams);
 }
-    
-std::string LogFoodCommand::getDescription() const {
-    return "log-food " + foodName;
-}

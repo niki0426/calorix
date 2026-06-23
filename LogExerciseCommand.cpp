@@ -7,7 +7,3 @@ LogExerciseCommand::LogExerciseCommand(Calorix& system, const std::string& exerc
 void LogExerciseCommand::execute() {
     system.logExercise(exerciseName, durationMinutes);
 }
-
-std::string LogExerciseCommand::getDescription() const {
-    return "log-exercise " + exerciseName;
-}

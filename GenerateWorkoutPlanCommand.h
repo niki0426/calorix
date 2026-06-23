@@ -10,5 +10,4 @@ private:
 public:
     GenerateWorkoutPlanCommand(Calorix& system, int duration);
     void execute() override;
-    std::string getDescription() const override;
 };

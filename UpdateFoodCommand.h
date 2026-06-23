@@ -11,5 +11,4 @@ private:
 public:
     UpdateFoodCommand(Calorix& system, const std::string& foodName, double newCalories);
     void execute() override;
-    std::string getDescription() const override;
 };

@@ -9,5 +9,4 @@ private:
 public:
     explicit ViewProgressCommand(Calorix& system);
     void execute() override;
-    std::string getDescription() const override;
 };

@@ -7,7 +7,3 @@ SetGoalsCommand::SetGoalsCommand(Calorix& system, const std::string& goalType, d
 void SetGoalsCommand::execute() {
     system.setGoals(goalType, targetValue, deadline);
 }
-
-std::string SetGoalsCommand::getDescription() const {
-    return "set-goals " + goalType;
-}

@@ -8,7 +8,3 @@ void EndCommand::execute() {
     system.saveData();
     running = false;
 }
-
-std::string EndCommand::getDescription() const {
-    return "end";
-}

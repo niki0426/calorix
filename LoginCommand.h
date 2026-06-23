@@ -11,5 +11,4 @@ private:
 public:
     LoginCommand(Calorix& system, const std::string& username, const std::string& password);
     void execute() override;
-    std::string getDescription() const override;
 };

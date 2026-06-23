@@ -10,5 +10,4 @@ private:
 public:
     EndCommand(Calorix& system, bool& running);
     void execute() override;
-    std::string getDescription() const override;
 };

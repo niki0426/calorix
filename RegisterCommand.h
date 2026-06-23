@@ -14,5 +14,4 @@ private:
 public:
     RegisterCommand(Calorix& system, const std::string& username, const std::string& password, int age, double weight, double height, const std::string& gender);
     void execute() override;
-    std::string getDescription() const override;
 };

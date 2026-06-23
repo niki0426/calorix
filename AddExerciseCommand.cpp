@@ -7,6 +7,3 @@ void AddExerciseCommand::execute() {
     system.addExercise(name, caloriesPerHour, muscleGroup);
 }
 
-std::string AddExerciseCommand::getDescription() const {
-    return "add-exercise " + name;
-}

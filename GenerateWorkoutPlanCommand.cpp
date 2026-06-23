@@ -5,7 +5,3 @@ GenerateWorkoutPlanCommand::GenerateWorkoutPlanCommand(Calorix& system, int dura
 void GenerateWorkoutPlanCommand::execute() {
     system.generateWorkoutPlan(duration);
 }
-
-std::string GenerateWorkoutPlanCommand::getDescription() const {
-    return "generate-workout-plan " + std::to_string(duration);
-}

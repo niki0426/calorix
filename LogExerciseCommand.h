@@ -11,5 +11,4 @@ private:
 public:
     LogExerciseCommand(Calorix& system, const std::string& exerciseName, int durationMinutes);
     void execute() override;
-    std::string getDescription() const override;
 };

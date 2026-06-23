@@ -5,7 +5,3 @@ ViewDailySummaryCommand::ViewDailySummaryCommand(Calorix& system) : system(syste
 void ViewDailySummaryCommand::execute() {
     system.viewDailySummary();
 }
-
-std::string ViewDailySummaryCommand::getDescription() const {
-    return "view-daily-summary";
-}

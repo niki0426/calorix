@@ -7,7 +7,3 @@ RegisterCommand::RegisterCommand(Calorix& system, const std::string& username, c
 void RegisterCommand::execute() {
     system.registerUser(username, password, age, weight, height, gender);
 }
-
-std::string RegisterCommand::getDescription() const {
-    return "register " + username;
-}

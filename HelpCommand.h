@@ -9,5 +9,4 @@ private:
 public:
     explicit HelpCommand(Calorix& system);
     void execute() override;
-    std::string getDescription() const override;
 };

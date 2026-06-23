@@ -9,6 +9,5 @@ private:
 public:
     explicit CalculateBMRCommand(Calorix& system);
     void execute() override;
-    std::string getDescription() const override;
 };
 

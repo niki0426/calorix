@@ -10,5 +10,4 @@ private:
 public:
     AddToFavoritesCommand(Calorix& system, const std::string& exerciseName);
     void execute() override;
-    std::string getDescription() const override;
 };

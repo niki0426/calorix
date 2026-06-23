@@ -5,7 +5,3 @@ LogoutCommand::LogoutCommand(Calorix& system) : system(system) {}
 void LogoutCommand::execute() {
     system.logout();
 }
-
-std::string LogoutCommand::getDescription() const {
-    return "logout";
-}

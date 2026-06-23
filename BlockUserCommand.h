@@ -10,5 +10,4 @@ private:
 public:
     BlockUserCommand(Calorix& system, const std::string& username);
     void execute() override;
-    std::string getDescription() const override;
 };

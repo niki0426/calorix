@@ -5,7 +5,3 @@ AddToFavoritesCommand::AddToFavoritesCommand(Calorix& system, const std::string&
 void AddToFavoritesCommand::execute() {
     system.addToFavorites(exerciseName);
 }
-
-std::string AddToFavoritesCommand::getDescription() const {
-    return "add-to-favorites " + exerciseName;
-}

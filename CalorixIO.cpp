@@ -37,6 +37,7 @@ void Calorix::loadUsers() {
         std::istringstream iss(line);
         std::string token;
         std::vector<std::string> parts;
+
         while (std::getline(iss, token, '|')) {
             parts.push_back(token);
         }

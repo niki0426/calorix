@@ -7,7 +7,3 @@ LoginCommand::LoginCommand(Calorix& system, const std::string& username, const s
 void LoginCommand::execute() {
     system.login(username, password);
 }
-
-std::string LoginCommand::getDescription() const {
-    return "login " + username;
-}

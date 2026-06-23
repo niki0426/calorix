@@ -6,7 +6,3 @@ AddFoodCommand::AddFoodCommand(Calorix& system, const std::string& name, double 
 void AddFoodCommand::execute() {
     system.addFood(name, calories, protein, carbs, fat);
 }
-
-std::string AddFoodCommand::getDescription() const {
-    return "add-food " + name;
-}

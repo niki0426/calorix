@@ -7,7 +7,3 @@ UpdateFoodCommand::UpdateFoodCommand(Calorix& system, const std::string& foodNam
 void UpdateFoodCommand::execute() {
     system.updateFood(foodName, newCalories);
 }
-
-std::string UpdateFoodCommand::getDescription() const {
-    return "update-food " + foodName;
-}

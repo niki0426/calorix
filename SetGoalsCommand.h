@@ -12,5 +12,4 @@ private:
 public:
     SetGoalsCommand(Calorix& system, const std::string& goalType, double targetValue, const std::string& deadline);
     void execute() override;
-    std::string getDescription() const override;
 };
