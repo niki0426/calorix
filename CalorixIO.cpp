@@ -40,7 +40,7 @@ void Calorix::loadUsers() {
         while (std::getline(iss, token, '|')) {
             parts.push_back(token);
         }
-        if (parts.size() < 8) continue;
+        if (parts.size() < 9) continue;
 
         int id = std::stoi(parts[0]);
         std::string username = parts[1];
@@ -50,7 +50,7 @@ void Calorix::loadUsers() {
         double weight = std::stod(parts[5]);
         double height = std::stod(parts[6]);
         Gender gender = stringToGender(parts[7]);
-        ActivityLevel level = (parts.size() >= 9) ? stringToActivityLevel(parts[8]) : ActivityLevel::SEDENTARY;
+		ActivityLevel level = stringToActivityLevel(parts[8]);        
 
         UserProfile prof(age, weight, height, gender, level);
 
@@ -144,7 +144,13 @@ void Calorix::loadFoodDiary() {
         double quantity = std::stod(parts[3]);
         std::string date = parts[4];
 
-        Trainee* trainee = findTraineeById(userId);
+        Trainee* trainee = nullptr;
+        try {
+            trainee = findTraineeById(userId);
+        }
+        catch (const std::runtime_error&) {
+            continue;
+        }
         const Food* food = findFoodById(foodId);
         if (trainee && food) {
             trainee->addFoodEntry(FoodEntry(entryId, food, quantity, date));
@@ -185,7 +191,13 @@ void Calorix::loadExerciseDiary() {
         int duration = std::stoi(parts[3]);
         std::string date = parts[4];
 
-        Trainee* trainee = findTraineeById(userId);
+        Trainee* trainee = nullptr;
+        try {
+            trainee = findTraineeById(userId);
+        }
+        catch (const std::runtime_error&) {
+            continue;
+        }
         const Exercise* exercise = findExerciseById(exerciseId);
         if (trainee && exercise) {
             trainee->addExerciseEntry(ExerciseEntry(entryId, exercise, duration, date));
